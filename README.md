@@ -83,6 +83,7 @@ Run the wdl workflow locally:
 java -jar cromwell-xx.jar run rmatTurbo.wdl -i test_bam_default.json
 ```
 
+
 OR submit the `xx.json` file to AnVIL under the [`INPUTS`] tab of
 `rmats_turbo_bam` workflow. Users can write the `Attribute` column
 using `json` format or click on `upload json` on the upper-right
