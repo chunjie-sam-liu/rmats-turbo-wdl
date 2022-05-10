@@ -1,0 +1,11 @@
+{
+  "rMATS_turbo.bam_g1": [
+    "../testdata/231ESRP.25K.rep-1.bam",
+    "../testdata/231ESRP.25K.rep-2.bam"
+  ],
+  "rMATS_turbo.gtf": "../testdata/gtf/Homo_sapiens.Ensembl.GRCh37.75.gtf",
+  "rMATS_turbo.pairedORsingle": "paired",
+  "rMATS_turbo.readLength": 50,
+  "rMATS_turbo.nthread": 4,
+  "rMATS_turbo.out_dir": "rmats_out"
+}
