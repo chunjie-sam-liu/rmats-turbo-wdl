@@ -1,0 +1,23 @@
+{
+  "rMATS_turbo.bam_g1": [
+    "../testdata/231ESRP.25K.rep-1.bam",
+    "../testdata/231ESRP.25K.rep-2.bam"
+  ],
+  "rMATS_turbo.bam_g2": [
+    "../testdata/231EV.25K.rep-1.bam",
+    "../testdata/231EV.25K.rep-2.bam"
+  ],
+  "rMATS_turbo.gtf": "../testdata/gtf/Homo_sapiens.Ensembl.GRCh37.75.gtf",
+  "rMATS_turbo.pairedORsingle": "paired",
+  "rMATS_turbo.readLength": 50,
+  "rMATS_turbo.nthread": 1,
+  "rMATS_turbo.out_dir": "rmats_out",
+  "rMATS_turbo.anchorLength": 2,
+  "rMATS_turbo.variable_readLength": true,
+  "rMATS_turbo.statoff": false,
+  "rMATS_turbo.paired_stats": true,
+  "rMATS_turbo.novelSS": true,
+  "rMATS_turbo.mil": 60,
+  "rMATS_turbo.mel": 600,
+  "rMATS_turbo.rmats_version": "v4.1.1"
+}
