@@ -49,29 +49,6 @@ workflow rMATS_turbo {
     }
   }
 
-  # scatter (i in range(length(bam_g2))) {
-  #   call rmats_pre as rmats_pre2 {
-  #     input:
-  #     bam = bam_g2[i],
-  #     bam_id = "g2_"+i,
-  #     gtf = gtf,
-  #     pairedORsingle = pairedORsingle,
-  #     readLength = readLength,
-  #     out_dir = out_dir,
-  #     lib_type = lib_type,
-  #     variable_readLength = variable_readLength,
-  #     anchorLength = anchorLength,
-  #     novelSS = novelSS,
-  #     mil = mil,
-  #     mel = mel,
-  #     machine_mem_gb = machine_mem_gb,
-  #     disk_space_gb = disk_space_gb,
-  #     use_ssd = use_ssd,
-  #     rmats_version = rmats_version,
-  #     allow_clipping = allow_clipping
-  #   }
-  # }
-
   call rmats_post {
     input:
     bam_name_g1 = rmats_pre1.bam_name,
@@ -140,9 +117,27 @@ task rmats_pre {
 
   command {
     echo ${bam} > prep.txt
-    python /rmats/rmats.py --b1 prep.txt --gtf ${gtf} -t ${pairedORsingle} --readLength ${readLength} --nthread 1 --od ${out_dir} --tmp tmp_output_prep_${bam_id} --task prep --libType ${lib_type} ${variable_readLength_opt} ${anchorLength_opt} ${anchorLength} ${novelSS_opt} ${mil_opt} ${mil_val} ${mel_opt} ${mel_val} ${allow_clipping_opt}
+
+    python /rmats/rmats.py \
+      --b1 prep.txt \
+      --gtf ${gtf} \
+      -t ${pairedORsingle} \
+      --readLength ${readLength} \
+      --nthread 1 \
+      --od ${out_dir} \
+      --tmp tmp_output_prep_${bam_id} \
+      --task prep \
+      --libType ${lib_type} \
+      ${variable_readLength_opt} \
+      ${anchorLength_opt} \
+      ${anchorLength} \
+      ${novelSS_opt} \
+      ${mil_opt} ${mil_val} ${mel_opt} ${mel_val} \
+      ${allow_clipping_opt}
+
     mkdir outfd
     python /rmats/cp_with_prefix.py prep_${bam_id}_ outfd tmp_output_prep_${bam_id}/*.rmats
+
     cp tmp_output_prep_${bam_id}/*read_outcomes_by_bam.txt prep_${bam_id}_read_outcomes_by_bam.txt
   }
 
