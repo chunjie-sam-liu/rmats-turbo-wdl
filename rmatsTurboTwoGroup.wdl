@@ -72,41 +72,41 @@ workflow rMATS_turbo {
     }
   }
 
-    call rmats_post {
-      input:
-      bam_name_g1 = rmats_pre1.bam_name,
-      bam_name_g2 = rmats_pre2.bam_name,
-      gtf = gtf,
-      readLength = readLength,
-      nthread = nthread,
-      out_dir = out_dir,
-      input_rmats1 = rmats_pre1.out_rmats,
-      input_rmats2 = rmats_pre2.out_rmats,
-      anchorLength = anchorLength,
-      tstat = tstat,
-      cstat = cstat,
-      statoff = statoff,
-      paired_stats = paired_stats,
-      novelSS = novelSS,
-      mil = mil,
-      mel = mel,
-      machine_mem_gb = machine_mem_gb,
-      disk_space_gb = disk_space_gb,
-      use_ssd = use_ssd,
-      rmats_version = rmats_version
-    }
-
-    output {
-      Array[File] read_outcomes = flatten([rmats_pre1.read_outcome, rmats_pre2.read_outcome])
-      File out_tar = rmats_post.out_tar
-    }
-
-    meta {
-      author: "Qian Liu"
-      email : "Qian.Liu@RoswellPark.org"
-      description: "WDL workflow on AnVIL for rMATS turbo v4.1.2(/4.1.1) developed in Dr. Yi Xing's lab"
-    }
+  call rmats_post {
+    input:
+    bam_name_g1 = rmats_pre1.bam_name,
+    bam_name_g2 = rmats_pre2.bam_name,
+    gtf = gtf,
+    readLength = readLength,
+    nthread = nthread,
+    out_dir = out_dir,
+    input_rmats1 = rmats_pre1.out_rmats,
+    input_rmats2 = rmats_pre2.out_rmats,
+    anchorLength = anchorLength,
+    tstat = tstat,
+    cstat = cstat,
+    statoff = statoff,
+    paired_stats = paired_stats,
+    novelSS = novelSS,
+    mil = mil,
+    mel = mel,
+    machine_mem_gb = machine_mem_gb,
+    disk_space_gb = disk_space_gb,
+    use_ssd = use_ssd,
+    rmats_version = rmats_version
   }
+
+  output {
+    Array[File] read_outcomes = flatten([rmats_pre1.read_outcome, rmats_pre2.read_outcome])
+    File out_tar = rmats_post.out_tar
+  }
+
+  meta {
+    author: "Qian Liu"
+    email : "Qian.Liu@RoswellPark.org"
+    description: "WDL workflow on AnVIL for rMATS turbo v4.1.2(/4.1.1) developed in Dr. Yi Xing's lab"
+  }
+}
 
 task rmats_pre {
   File bam
