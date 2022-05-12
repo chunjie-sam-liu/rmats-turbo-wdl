@@ -197,7 +197,20 @@ task rmats_post {
     mkdir fd_rmats
     for file in ${sep=" " rmats}; do fn=`basename $file`; sed 's/.*\///g' $file > fd_rmats/$fn; done
     echo ${sep="," bam_name_g1} > bam_g1.txt
-    python /rmats/rmats.py --b1 bam_g1.txt --gtf ${gtf} --readLength ${readLength} --nthread ${nthread} --od ${out_dir} --tmp fd_rmats --task post ${anchorLength_opt} ${anchorLength} --tstat ${tstat} ${cstat_opt} ${cstat_val} ${statoff_opt} ${paired_stats_opt} ${novelSS_opt} ${mil_opt} ${mil_val} ${mel_opt} ${mel_val}
+    python /rmats/rmats.py \
+      --b1 bam_g1.txt \
+      --gtf ${gtf} \
+      --readLength ${readLength} \
+      --nthread ${nthread} \
+      --od ${out_dir} \
+      --tmp fd_rmats \
+      --task post \
+      ${anchorLength_opt} ${anchorLength} \
+      --tstat ${tstat} \
+      ${cstat_opt} ${cstat_val} \
+      ${statoff_opt} ${paired_stats_opt} \
+      ${novelSS_opt} \
+      ${mil_opt} ${mil_val} ${mel_opt} ${mel_val}
     tar czf ${out_dir}.tar.gz ${out_dir}
   }
 
