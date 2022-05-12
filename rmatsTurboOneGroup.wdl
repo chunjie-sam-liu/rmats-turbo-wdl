@@ -22,7 +22,7 @@ workflow rMATS_turbo {
   Boolean allow_clipping = false
 
   Int machine_mem_gb = 4
-  Int disk_space_gb = 50
+  Int disk_space_gb = 20
   Boolean use_ssd = false
   String rmats_version = "v4.1.2"
 
@@ -67,8 +67,8 @@ workflow rMATS_turbo {
     novelSS = novelSS,
     mil = mil,
     mel = mel,
-    machine_mem_gb = 500,
-    disk_space_gb = 800,
+    machine_mem_gb = machine_mem_gb,
+    disk_space_gb = disk_space_gb,
     use_ssd = use_ssd,
     rmats_version = rmats_version
   }
