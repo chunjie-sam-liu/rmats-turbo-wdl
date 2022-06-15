@@ -55,7 +55,7 @@ workflow rMATS_turbo {
     # bam_name_g2 = rmats_pre2.bam_name,
     gtf = gtf,
     readLength = readLength,
-    nthread = nthread,
+    nthread = 90,
     out_dir = out_dir,
     input_rmats1 = rmats_pre1.out_rmats,
     # input_rmats2 = rmats_pre2.out_rmats,
@@ -67,8 +67,8 @@ workflow rMATS_turbo {
     novelSS = novelSS,
     mil = mil,
     mel = mel,
-    machine_mem_gb = 100,
-    disk_space_gb = 300,
+    machine_mem_gb = 500,
+    disk_space_gb = 1000,
     use_ssd = use_ssd,
     rmats_version = rmats_version
   }
