@@ -55,7 +55,7 @@ workflow rMATS_turbo {
     # bam_name_g2 = rmats_pre2.bam_name,
     gtf = gtf,
     readLength = readLength,
-    nthread = 4,
+    nthread = 1,
     out_dir = out_dir,
     input_rmats1 = rmats_pre1.out_rmats,
     # input_rmats2 = rmats_pre2.out_rmats,
