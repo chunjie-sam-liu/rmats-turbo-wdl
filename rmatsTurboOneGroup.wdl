@@ -67,8 +67,10 @@ workflow rMATS_turbo {
     novelSS = novelSS,
     mil = mil,
     mel = mel,
-    machine_mem_gb = 500,
-    disk_space_gb = 1000,
+    # machine_mem_gb = 500,
+    # disk_space_gb = 1000,
+    machine_mem_gb = 800, # for all GTEx samples (n=15193)
+    disk_space_gb = 20000, # for all GTEx samples (n=15193)
     use_ssd = use_ssd,
     rmats_version = rmats_version
   }
