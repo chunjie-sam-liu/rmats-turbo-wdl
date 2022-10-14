@@ -157,13 +157,13 @@ task rmats_pre {
 }
 
 task rmats_post {
-  Array[String] bam_name_g1
+  Array[String] bam_name_g1 # rmats_pre1.bam_name
   # Array[String] bam_name_g2
   File gtf
   Int readLength
   Int nthread
   String out_dir
-  Array[Array[File]] input_rmats1
+  Array[Array[File]] input_rmats1 # rmats_pre1.out_rmats
   # Array[Array[File]] input_rmats2
   Int? anchorLength
   Int tstat
@@ -226,6 +226,7 @@ task rmats_post {
   output {
     # File out = "${out_dir}"
     File out_tar = "${out_dir}.tar.gz"
+    File b1_file = "bam_g1.txt"
   }
 
   parameter_meta {
