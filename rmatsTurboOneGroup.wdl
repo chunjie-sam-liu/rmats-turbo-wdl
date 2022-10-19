@@ -78,7 +78,8 @@ workflow rMATS_turbo {
   output {
     # Array[File] read_outcomes = flatten([rmats_pre1.read_outcome, rmats_pre2.read_outcome])
     Array[File] read_outcomes = flatten([rmats_pre1.read_outcome])
-    File out_tar = rmats_post.out_tar
+    # File out_tar = rmats_post.out_tar
+    File b1_file = rmats_post.b1_file
   }
 
   meta {
@@ -199,21 +200,21 @@ task rmats_post {
     mkdir fd_rmats
     for file in ${sep=" " rmats}; do fn=`basename $file`; sed 's/.*\///g' $file > fd_rmats/$fn; done
     echo ${sep="," bam_name_g1} > bam_g1.txt
-    python /rmats/rmats.py \
-      --b1 bam_g1.txt \
-      --gtf ${gtf} \
-      --readLength ${readLength} \
-      --nthread ${nthread} \
-      --od ${out_dir} \
-      --tmp fd_rmats \
-      --task post \
-      ${anchorLength_opt} ${anchorLength} \
-      --tstat ${tstat} \
-      ${cstat_opt} ${cstat_val} \
-      ${statoff_opt} ${paired_stats_opt} \
-      ${novelSS_opt} \
-      ${mil_opt} ${mil_val} ${mel_opt} ${mel_val}
-    tar czf ${out_dir}.tar.gz ${out_dir}
+    # python /rmats/rmats.py \
+    #   --b1 bam_g1.txt \
+    #   --gtf ${gtf} \
+    #   --readLength ${readLength} \
+    #   --nthread ${nthread} \
+    #   --od ${out_dir} \
+    #   --tmp fd_rmats \
+    #   --task post \
+    #   ${anchorLength_opt} ${anchorLength} \
+    #   --tstat ${tstat} \
+    #   ${cstat_opt} ${cstat_val} \
+    #   ${statoff_opt} ${paired_stats_opt} \
+    #   ${novelSS_opt} \
+    #   ${mil_opt} ${mil_val} ${mel_opt} ${mel_val}
+    # tar czf ${out_dir}.tar.gz ${out_dir}
   }
 
   runtime {
@@ -225,7 +226,7 @@ task rmats_post {
 
   output {
     # File out = "${out_dir}"
-    File out_tar = "${out_dir}.tar.gz"
+    # File out_tar = "${out_dir}.tar.gz"
     File b1_file = "bam_g1.txt"
   }
 
